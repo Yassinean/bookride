@@ -1,22 +1,23 @@
 package com.bookride.model;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.time.LocalDateTime;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 
 import com.bookride.model.Enum.Status;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.*;
 
 @Entity
+@Table(name = "drivers")
 @Data
 @AllArgsConstructor
-@NoArgsConstructor 
-@Builder 
+@NoArgsConstructor
+@Builder
 public class Driver {
 
     @Id
@@ -30,6 +31,18 @@ public class Driver {
     private String lastName;
 
     @Enumerated(EnumType.STRING)
+    @NotNull
     private Status status;
-    
+
+    @NotNull
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
+    private LocalDateTime availabilityStart;
+
+    @NotNull
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
+    private LocalDateTime availabilityEnd;
+
+    @OneToOne(mappedBy = "driver")
+    private Vehicle vehicle;
+
 }
