@@ -1,4 +1,4 @@
-# Gestion de Chauffeurs
+# Bookride
 
 Ce projet est une API RESTful pour la gestion des chauffeurs, des véhicules et des réservations. Il permet d'effectuer des opérations CRUD (Créer, Lire, Mettre à jour, Supprimer) sur les entités, tout en offrant des analyses statistiques telles que le taux d'occupation et la répartition des statuts des chauffeurs.
 
